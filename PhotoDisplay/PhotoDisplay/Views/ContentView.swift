@@ -19,13 +19,15 @@ struct ContentView: View {
         GridItem(.adaptive(minimum: 300))
     ]
 
+    private let minimumColumnWidth: CGFloat = 200
+
     var body: some View {
         ScrollView {
             LazyVGrid(columns: adaptiveColumns, spacing: 20) {
-                ForEach(images.indices) { i in
-                    Image(images[i])
+                ForEach(images, id: \.self) { imageName in
+                    Image(imageName)
                         .resizable()
-                        .frame(width: 200, height: 300)
+                        .frame(width: minimumColumnWidth, height: 300)
                         .border(.black)
                 }
             }
