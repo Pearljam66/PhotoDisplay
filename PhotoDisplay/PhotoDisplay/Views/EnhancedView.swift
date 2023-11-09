@@ -32,17 +32,29 @@ struct EnhancedView: View {
     @Binding var imageDescription: String
 
     @State private var orientation = UIDeviceOrientation.unknown
+    @State private var isFullScreen: Bool = false
 
     let screenSize: CGRect = UIScreen.main.bounds
 
     var body: some View {
         Group {
-            if (orientation.isLandscape) {
+            if isFullScreen {
+                Image(imageFile)
+                    .resizable()
+                    .scaledToFit()
+                    .edgesIgnoringSafeArea(.all)
+                    .onTapGesture {
+                        self.isFullScreen.toggle()
+                    }
+            } else if (orientation.isLandscape) {
                 LazyHStack {
                     VStack {
                         Image(imageFile)
                             .resizable()
                             .scaledToFit()
+                            .onTapGesture {
+                                self.isFullScreen.toggle()
+                            }
                     }
                     .frame(width: screenSize.width * 0.5)
 
