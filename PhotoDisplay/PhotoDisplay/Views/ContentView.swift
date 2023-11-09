@@ -9,29 +9,46 @@ import SwiftUI
 
 struct ContentView: View {
     private let images: [String] = [
-        "one", "two", "three", "four",
-        "five", "six", "seven", "eight",
-        "nine", "ten", "eleven", "twelve",
-        "thirteen", "fourteen", "fifteen", "sixteen"
+        "five", "five", "five", "five",
+        "five", "five", "five", "five",
+        "five", "five", "five", "five"
     ]
 
     private let adaptiveColumns = [
         GridItem(.adaptive(minimum: 300))
     ]
 
-    private let minimumColumnWidth: CGFloat = 200
+    @State private var isClicked: Bool = false
+    @State private var imageFile: String = ""
+    @State private var imageName: String = ""
+    @State private var imageDate: String = ""
+    @State private var imageDescription: String = ""
 
     var body: some View {
-        ScrollView {
-            LazyVGrid(columns: adaptiveColumns, spacing: 20) {
-                ForEach(images, id: \.self) { imageName in
-                    Image(imageName)
-                        .resizable()
-                        .frame(width: minimumColumnWidth, height: 300)
-                        .border(.black)
+        NavigationView {
+            ScrollView {
+                LazyVGrid(columns: adaptiveColumns, spacing: 20) {
+                    ForEach(images.indices, id: \.self) { i in
+                        NavigationLink(destination: EnhancedView(imageFile: $imageFile, imageName: $imageName, imageDate: $imageDate, imageDescription: $imageDescription), isActive: $isClicked, label: {
+                            Image(images[i])
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 200, height: 300)
+                                .onTapGesture {
+                                    imageFile = images[i]
+                                    imageName = "Orko the puppito"
+                                    imageDate = "10/10/2023"
+                                    imageDescription = "Meet Orko, the lively and lovable pup with a heart full of joy! With his fluffy fur and playful demeanor, Orko brings boundless energy to every moment. Whether chasing after his favorite squeaky toy or cuddling up for a cozy nap, this furry friend is a constant source of happiness. His wagging tail and floppy ears are a testament to the pure delight he finds in the simple pleasures of life. Join Orko on his adventures, and let his infectious enthusiasm brighten your day with warmth and companionship."
+
+                                    isClicked = true
+                                }
+                        })
+                    }
                 }
+                .padding(20)
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
