@@ -34,18 +34,19 @@ struct ContentView: View {
                                 .resizable()
                                 .scaledToFill()
                                 .frame(width: 200, height: 300)
+                                .padding(20)
                                 .onTapGesture {
                                     imageFile = images[i]
                                     imageName = "Orko the puppito"
                                     imageDate = "10/10/2023"
-                                    imageDescription = "Meet Orko, the lively and lovable pup with a heart full of joy! With his fluffy fur and playful demeanor, Orko brings boundless energy to every moment. Whether chasing after his favorite squeaky toy or cuddling up for a cozy nap, this furry friend is a constant source of happiness. His wagging tail and floppy ears are a testament to the pure delight he finds in the simple pleasures of life. Join Orko on his adventures, and let his infectious enthusiasm brighten your day with warmth and companionship."
+                                    imageDescription = "Meet Orko, the lively and lovable pup with a heart full of joy! With his fluffy fur and playful demeanor, Orko brings boundless energy to every moment. Whether murdering his favorite squeaky toy or doing the potty dance, this furry friend is a constant source of happiness. His wagging tail and floppy ears are a testament to the pure delight he finds in the simple pleasures of life. Join Orko on his adventures, and let his infectious enthusiasm brighten your day with warmth and companionship."
 
                                     isClicked = true
                                 }
                         })
                     }
                 }
-                .padding(20)
+                .padding(10)
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())

@@ -48,6 +48,7 @@ struct EnhancedView: View {
 
                     VStack {
                         Text(imageName)
+                            .font(.title)
                             .fontWeight(.bold)
                         Text(imageDate)
 
@@ -66,10 +67,15 @@ struct EnhancedView: View {
 
                     VStack {
                         Text(imageName)
-                            .fontWeight( .bold )
+                            .font(.largeTitle)
+                            .fontWeight(.bold )
+                            .padding(5)
                         Text(imageDate)
+                            .padding(10)
+                            .font(.title)
 
                         Text(imageDescription)
+                            .padding(.horizontal, 20)
                     }
                     .frame(height: screenSize.height * 0.5)
                 }
@@ -79,8 +85,8 @@ struct EnhancedView: View {
             orientation = newOrientation
         }
     }
-
 }
+
 #Preview {
-    EnhancedView(imageFile: .constant("One"), imageName: .constant("One"), imageDate: .constant("09/11/2023"), imageDescription:.constant("Blah blah blah"))
+    EnhancedView(imageFile: .constant("Five"), imageName: .constant("Orko the puppito"), imageDate: .constant("10/10/2023"), imageDescription:.constant("Meet Orko, the lively and lovable pup with a heart full of joy! With his fluffy fur and playful demeanor, Orko brings boundless energy to every moment. Whether murdering his favorite squeaky toy or doing the potty dance, this furry friend is a constant source of happiness. His wagging tail and floppy ears are a testament to the pure delight he finds in the simple pleasures of life. Join Orko on his adventures, and let his infectious enthusiasm brighten your day with warmth and companionship."))
 }
